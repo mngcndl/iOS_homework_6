@@ -30,12 +30,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         visitCounterData.text = String(numberOfVisits)
         return visitCounterData
     }()
-        
-    private let visitCounterImage: UIImageView = {
-        let visitCounterImage = UIImageView()
-        visitCounterImage.image = UIImage(named: "eye.png")
-        return visitCounterImage
-    }()
 
     private lazy var tableView: UITableView = {
         var tableView = UITableView()
@@ -83,20 +77,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         label.backgroundColor = .systemBackground
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.frame = CGRect(x: 0, y: 0, width: customHeaderView.frame.width * 0.7, height: customHeaderView.frame.height)
+        label.frame = CGRect(x: 0, y: 0, width: customHeaderView.frame.width, height: customHeaderView.frame.height)
         
-        let visitCounterView = UIView()
-        visitCounterView.backgroundColor = .systemBackground
-        visitCounterView.frame = CGRect(x: customHeaderView.frame.width * 0.7 + 30, y: 0, width: customHeaderView.frame.width * 0.3 - 30, height: customHeaderView.frame.height)
-        
-        visitCounterData.font = .systemFont(ofSize: 18)
-        visitCounterImage.frame = CGRect(x: 0, y: (visitCounterView.frame.height - visitCounterView.frame.width * 0.3) / 2, width: visitCounterView.frame.width * 0.3, height: visitCounterView.frame.width * 0.3)
-        visitCounterData.frame = CGRect(x: visitCounterImage.frame.width + 10, y: 0, width: visitCounterView.frame.width - visitCounterImage.frame.width - 10, height: visitCounterView.frame.height)
-            
-        visitCounterView.addSubview(visitCounterImage)
-        visitCounterView.addSubview(visitCounterData)
         customHeaderView.addSubview(label)
-        customHeaderView.addSubview(visitCounterView)
         
         return customHeaderView
     }
